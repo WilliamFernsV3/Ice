@@ -22,8 +22,6 @@ public class SourceWatcher {
         self.action = action
     }
     
-    #if os(macOS)
-    
     private var watchers: [DispatchSourceFileSystemObject] = []
     
     public func go() throws -> Never {
@@ -88,13 +86,4 @@ public class SourceWatcher {
             self.needsAction = false
         }
     }
-    
-    #else
-    
-    public func go() throws -> Never {
-        throw IceError(message: "-w is not supported on Linux")
-    }
-    
-    #endif
-    
 }
